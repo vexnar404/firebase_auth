@@ -3,16 +3,16 @@ import { auth } from './firebase';
 import { RecaptchaVerifier, signInWithPhoneNumber, signOut } from 'firebase/auth';
 
 const Container = ({ children }) => (
-  <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center p-4 sm:p-6 bg-gradient-to-br from-indigo-100 via-white to-peach-100">
-    <div className="w-full max-w-md bg-white p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl shadow-gray-100 border border-gray-100 transform transition-all duration-300 hover:shadow-gray-200">
+  <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center p-3 sm:p-6 bg-gradient-to-br from-indigo-100 via-white to-peach-100">
+    <div className="w-full max-w-lg bg-white p-8 sm:p-12 rounded-[2rem] shadow-2xl shadow-gray-100 border border-gray-100 transform transition-all duration-300 hover:shadow-gray-200">
       {children}
     </div>
   </div>
 );
 
-const InputStyle = "w-full px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl border border-gray-200 focus:ring-4 focus:ring-violet-100 focus:border-violet-300 outline-none transition duration-150 text-gray-800 placeholder-gray-400 text-sm sm:text-base";
+const InputStyle = "w-full px-5 py-4 rounded-xl border border-gray-200 focus:ring-4 focus:ring-violet-100 focus:border-violet-300 outline-none transition duration-150 text-gray-800 placeholder-gray-400 text-base sm:text-lg";
 
-const PrimaryButtonStyle = "w-full bg-violet-600 hover:bg-violet-700 disabled:bg-violet-300 text-white font-semibold py-3 sm:py-3.5 rounded-xl transition duration-200 transform hover:-translate-y-0.5 shadow-md shadow-violet-100 active:translate-y-0 active:shadow-inner text-sm sm:text-base";
+const PrimaryButtonStyle = "w-full bg-violet-600 hover:bg-violet-700 disabled:bg-violet-300 text-white font-semibold py-4 rounded-xl transition duration-200 transform hover:-translate-y-0.5 shadow-md shadow-violet-100 active:translate-y-0 active:shadow-inner text-base sm:text-lg";
 
 function App() {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -104,15 +104,15 @@ function App() {
     return (
       <Container>
         <div className="text-center">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-2">Success</h2>
-          <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 font-medium">Authentication complete.</p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">Success</h2>
+          <p className="text-base sm:text-lg text-gray-600 mb-8 sm:mb-10 font-medium">Authentication complete.</p>
 
-          <div className="bg-gray-50 p-4 sm:p-5 rounded-2xl break-all text-[10px] sm:text-xs text-gray-600 mb-6 sm:mb-8 border border-gray-100 text-left font-mono relative">
-            <span className="absolute -top-3 left-4 bg-gray-50 px-2 py-0.5 text-[10px] sm:text-xs font-bold text-gray-500 rounded-full border border-gray-100">Token</span>
+          <div className="bg-gray-50 p-5 sm:p-6 rounded-2xl break-all text-xs sm:text-sm text-gray-600 mb-8 sm:mb-10 border border-gray-100 text-left font-mono relative">
+            <span className="absolute -top-3 left-4 bg-gray-50 px-2 py-0.5 text-xs font-bold text-gray-500 rounded-full border border-gray-100">Token</span>
             {userToken.substring(0, 100)}...
           </div>
 
-          <button onClick={handleLogout} className="w-full bg-rose-50 hover:bg-rose-100 text-rose-600 font-semibold py-3 sm:py-3.5 px-4 rounded-xl transition duration-200 text-sm sm:text-base">
+          <button onClick={handleLogout} className="w-full bg-rose-50 hover:bg-rose-100 text-rose-600 font-semibold py-4 px-4 rounded-xl transition duration-200 text-base sm:text-lg">
             Log Out
           </button>
         </div>
@@ -122,37 +122,37 @@ function App() {
 
   return (
     <Container>
-      <div className="w-14 h-14 sm:w-16 sm:h-16 bg-violet-100 rounded-2xl flex items-center justify-center mb-5 sm:mb-6 shadow-inner shadow-violet-200 mx-auto sm:mx-0">
-        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-violet-100 rounded-2xl flex items-center justify-center mb-6 sm:mb-8 shadow-inner shadow-violet-200 mx-auto sm:mx-0">
+        <svg className="w-8 h-8 sm:w-10 sm:h-10 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
         </svg>
       </div>
 
-      <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1 text-center sm:text-left">Sign In</h2>
-      <p className="text-sm sm:text-base text-gray-500 mb-6 sm:mb-8 font-medium text-center sm:text-left">Verify your phone number.</p>
+      <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2 text-center sm:text-left">Sign In</h2>
+      <p className="text-base sm:text-lg text-gray-500 mb-8 sm:mb-10 font-medium text-center sm:text-left">Verify your phone number.</p>
 
       {error && (
-        <div className="bg-rose-50 border border-rose-100 p-3 sm:p-4 mb-5 sm:mb-6 rounded-xl flex items-center gap-3">
-          <svg className="w-5 h-5 text-rose-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+        <div className="bg-rose-50 border border-rose-100 p-4 mb-6 sm:mb-8 rounded-xl flex items-center gap-3">
+          <svg className="w-6 h-6 text-rose-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
           </svg>
-          <p className="text-rose-700 text-xs sm:text-sm font-medium">{error}</p>
+          <p className="text-rose-700 text-sm sm:text-base font-medium">{error}</p>
         </div>
       )}
 
       {!confirmationResult ? (
-        <form onSubmit={requestOTP} className="space-y-4 sm:space-y-5">
+        <form onSubmit={requestOTP} className="space-y-5 sm:space-y-6">
           <div className="relative">
-            <label className="block text-xs sm:text-sm font-semibold text-gray-600 mb-1.5 ml-1">Phone Number</label>
+            <label className="block text-sm sm:text-base font-semibold text-gray-600 mb-2 ml-1">Phone Number</label>
             <input
               type="tel"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               placeholder="+91 98765 43210"
-              className={`${InputStyle} pl-10 sm:pl-12`}
+              className={`${InputStyle} pl-12 sm:pl-14`}
               required
             />
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 absolute left-3 sm:left-4 bottom-3.5 sm:bottom-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 absolute left-4 sm:left-5 bottom-4 sm:bottom-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
           </div>
@@ -162,7 +162,7 @@ function App() {
           <button type="submit" disabled={loading} className={`${PrimaryButtonStyle}`}>
             {loading ? (
               <span className="flex items-center justify-center gap-2">
-                <svg className="animate-spin h-4 w-4 sm:h-5 sm:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg className="animate-spin h-5 w-5 sm:h-6 sm:w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
@@ -172,15 +172,15 @@ function App() {
           </button>
         </form>
       ) : (
-        <form onSubmit={verifyOTP} className="space-y-4 sm:space-y-5">
+        <form onSubmit={verifyOTP} className="space-y-5 sm:space-y-6">
           <div>
-            <label className="block text-xs sm:text-sm font-semibold text-gray-600 mb-1.5 ml-1 text-center">OTP</label>
+            <label className="block text-sm sm:text-base font-semibold text-gray-600 mb-2 ml-1 text-center">OTP</label>
             <input
               type="text"
               value={otp}
               onChange={(e) => setOtp(e.target.value)}
               placeholder="123456"
-              className={`${InputStyle} text-center text-2xl sm:text-3xl font-bold tracking-[.3em] sm:tracking-[.5em] focus:ring-green-100 focus:border-green-300`}
+              className={`${InputStyle} text-center text-3xl sm:text-4xl font-bold tracking-[.3em] sm:tracking-[.5em] focus:ring-green-100 focus:border-green-300`}
               required
               maxLength={6}
             />
@@ -188,8 +188,8 @@ function App() {
           <button type="submit" disabled={loading} className={`${PrimaryButtonStyle} !bg-green-600 hover:!bg-green-700 disabled:!bg-green-300 shadow-green-100`}>
             {loading ? 'Verifying...' : 'Verify'}
           </button>
-          <div className="text-center mt-3 sm:mt-4">
-            <button type="button" onClick={() => setConfirmationResult(null)} className="text-xs sm:text-sm font-semibold text-gray-500 hover:text-violet-600 transition">
+          <div className="text-center mt-4 sm:mt-5">
+            <button type="button" onClick={() => setConfirmationResult(null)} className="text-sm sm:text-base font-semibold text-gray-500 hover:text-violet-600 transition">
               Back
             </button>
           </div>
